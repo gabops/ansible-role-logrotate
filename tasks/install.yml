@@ -1,0 +1,12 @@
+---
+- name: Install logrotate (RedHat)
+  yum:
+    name: "{{ logrotate_packages }}"
+    state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Install logrotate (Debian)
+  apt:
+    name: "{{ logrotate_packages }}"
+    state: present
+  when: ansible_os_family == "Debian"

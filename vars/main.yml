@@ -1,0 +1,3 @@
+---
+__logrotate_packages:
+  - logrotate

@@ -1,0 +1,5 @@
+---
+- name: Set logrotate packages
+  set_fact:
+    logrotate_packages: "{{ __logrotate_packages }}"
+  when: logrotate_packages | length == 0

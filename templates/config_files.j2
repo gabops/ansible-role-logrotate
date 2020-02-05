@@ -1,0 +1,10 @@
+# {{ ansible_managed }}
+
+{% if item.path is iterable and item.path is not string %}
+{{ item.path | join(' ') }} {
+{% else %}
+{{ item.path }} {
+{% endif %}
+
+    {{ item.directives | indent(4) }}
+}

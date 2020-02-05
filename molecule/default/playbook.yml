@@ -1,0 +1,48 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    logrotate_global_config:
+      - weekly
+      - rotate 4
+      - create
+      - dateext
+      - include /etc/logrotate.d
+
+    logrotate_config_files:
+      - name: messages
+        path: /var/log/messages
+        directives: |
+          rotate 5
+          weekly
+          postrotate
+            /usr/bin/killall -HUP syslogd
+          endscript
+
+      - name: httpd
+        path:
+          - /var/log/httpd/access.log
+          - /var/log/httpd/error.log
+        directives: |
+          rotate 5
+          mail www@my.org
+          size 100k
+          sharedscripts
+          postrotate
+            /usr/bin/killall -HUP httpd
+          endscript
+
+      - name: news
+        path: /var/log/news/*
+        directives: |
+          monthly
+          rotate 2
+          olddir /var/log/news/old
+          missingok
+          postrotate
+            kill -HUP 'cat /var/run/inn.pid'
+          endscript
+          nocompress
+
+  roles:
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"

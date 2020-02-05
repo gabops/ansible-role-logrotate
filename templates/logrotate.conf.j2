@@ -1,0 +1,7 @@
+# {{ ansible_managed }}
+
+{% for config in logrotate_global_configuration -%}
+
+{{ config }}
+
+{% endfor %}
