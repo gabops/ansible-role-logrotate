@@ -3,7 +3,7 @@
   template:
     src: logrotate.conf.j2
     dest: /etc/logrotate.conf
-  when: logrotate_apply_global_config | bool and logrotate_global_config | length
+  when: logrotate_global_config | length
 
 - name: Configure logrotate files
   template:
