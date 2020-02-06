@@ -16,7 +16,7 @@ galaxy_info:
         - all
     - name: Amazon Linux 2
       versions:
-        - any    
+        - any
     - name: Debian
       versions:
         - jessie
