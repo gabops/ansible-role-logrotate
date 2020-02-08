@@ -10,6 +10,6 @@
   template:
     src: config_files.j2
     dest: /etc/logrotate.d/{{ item.name }}
+    mode: "0644"
   loop: "{{ logrotate_config_files }}"
-  mode: "0644"
   when: logrotate_config_files | length
