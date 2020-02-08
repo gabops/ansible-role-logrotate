@@ -3,6 +3,6 @@ logrotate_packages: []
 
 logrotate_enable_repo: ""
 
-logrotate_global_config: []
+logrotate_config_global: []
 
 logrotate_config_files: []

@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   vars:
-    logrotate_global_config:
+    logrotate_config_global:
       - weekly
       - rotate 4
       - create

@@ -3,7 +3,7 @@
   set_fact:
     logrotate_default_config_files_path: "{{ item.split(' ')[1] }}"
   when: "'include' in item"
-  loop: "{{ logrotate_global_config }}"
+  loop: "{{ logrotate_config_global }}"
 
 - name: Set logrotate packages
   set_fact:
