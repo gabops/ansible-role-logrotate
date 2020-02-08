@@ -34,6 +34,16 @@ logrotate_global_config:
 
 The role will detect automatically the path on the `include` directive and will use that instead of the default `/etc/logrotate.d`.
 
+- All configurations defined in `logrotate_config_files` will be added to individual files using the value defined in `name` as filename.
+
+- The parameters every definition in `logrotate_config_files` requires are:
+```yaml
+logrotate_config_files:
+  - name: ""
+    path: "" # => This can be string or list!
+    directives: ""
+```
+
 Dependencies
 ------------
 
