@@ -34,8 +34,6 @@ logrotate_global_config:
 
 The role will detect automatically the path on the `include` directive and will use that instead of the default `/etc/logrotate.d`.
 
-- The configurations defined in `logrotate_config_files` will be added into individual files using as filename the string defined in the `name` parameter prefixed with ansible_". The prefix is added for making safe and easy to control the state (present, absent) of a definition.
-
 Dependencies
 ------------
 
