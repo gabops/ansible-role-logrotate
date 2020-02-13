@@ -37,11 +37,13 @@ The role will detect automatically the path on the `include` directive and will 
 - All configurations defined in `logrotate_config_files` will be added to individual files using the value defined in `name` as filename.
 
 - The parameters every definition in `logrotate_config_files` requires are:
+
 ```yaml
 logrotate_config_files:
-  - name: ""
-    path: "" # => This can be string or list!
-    directives: ""
+  - name: ""        # => Mandatory.
+    state: ""       # => Optional: possible values are present or absent. If not declared it will be pesent by default.
+    path: ""        # => Mandatory (This can be string or list!).
+    directives: ""  # => Mandatory.
 ```
 
 Dependencies
@@ -64,6 +66,7 @@ Example Playbook
 
         logrotate_config_files:
           - name: messages
+            state: absent
             path: /var/log/messages
             directives: |
               rotate 5

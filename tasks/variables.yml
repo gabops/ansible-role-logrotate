@@ -1,7 +1,7 @@
 ---
 - name: Set config files path
   set_fact:
-    logrotate_default_config_files_path: "{{ item.split(' ')[1] }}"
+    logrotate_include_path: "{{ item.split(' ')[1] }}"
   when: "'include' in item"
   loop: "{{ logrotate_config_global }}"
 
