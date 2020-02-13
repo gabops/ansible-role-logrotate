@@ -6,10 +6,21 @@
     mode: "0644"
   when: logrotate_config_global | length
 
+- name: Remove configuration files marked as "absent"
+  file:
+    path: "{{ logrotate_include_path | default(logrotate_default_include_path) }}/{{ item.name }}"
+    state: absent
+  when: item.state | default('present') == "absent"
+  loop: "{{ logrotate_config_files }}"
+  loop_control:
+    label: "{{ item.name }}"
+
 - name: Configure logrotate files
   template:
     src: config_files.j2
-    dest: /etc/logrotate.d/{{ item.name }}
+    dest: "{{ logrotate_include_path | default(logrotate_default_include_path) }}/{{ item.name }}"
     mode: "0644"
   loop: "{{ logrotate_config_files }}"
-  when: logrotate_config_files | length
+  loop_control:
+    label: "{{ item.name }}"
+  when: logrotate_config_files | length and item.state | default('present') != "absent"

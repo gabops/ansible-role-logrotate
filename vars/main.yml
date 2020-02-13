@@ -1,4 +1,4 @@
 ---
-logrotate_default_config_files_path: /etc/logrotate.d
+logrotate_default_include_path: /etc/logrotate.d
 __logrotate_packages:
   - logrotate
